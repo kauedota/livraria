@@ -1,25 +1,26 @@
-import { BookOpenIcon } from "@phosphor-icons/react"
+import { BookOpenIcon, StarFourIcon } from "@phosphor-icons/react"
 import Card, { type CardProps } from "../../components/card/Card"
-import { StarFourIcon } from "@phosphor-icons/react/dist/ssr"
 
 function Home() {
 
     const opcoes: CardProps[] = [
         {
-            icone: <BookOpenIcon size={24} />,
-            titulo: "Produtos",
-            imageUrl: "https://ik.imagekit.io/5eywr3ioq/livros.png"
+            icon: <BookOpenIcon size={24} />,
+            title: "Produtos",
+            imageUrl: "https://images.unsplash.com/photo-1762424361973-617839b3dc4d?fm=jpg&q=80&w=1200&auto=format&fit=crop",
+            rota: "/produtos"
         },
         {
-            icone: <StarFourIcon size={24} />,
-            titulo: "Categorias",
-            imageUrl: "https://ik.imagekit.io/5eywr3ioq/categorias.png"
+            icon: <StarFourIcon size={24} />,
+            title: "Categorias",
+            imageUrl: "https://ik.imagekit.io/5eywr3ioq/categorias.png",
+            rota: "/categorias"
         },
     ]
 
     return (
 
-        <main className="w-full max-w-7xl mx-auto px-4 md:px-8
+        <main className="w-full max-w-[1600px] mx-auto px-4 md:px-8
                     py-8 md:py-16 flex flex-col gap-12"
         >
 
@@ -27,19 +28,22 @@ function Home() {
 
             <section className="flex flex-col md:flex-row
                          items-center justify-between
-                         gap-8 bg-white rounded-xl
-                         border border-slate-200 p-6
+                         gap-8 bg-linear-to-br from-blue-50 via-white to-stone-50 rounded-xl
+                         border border-stone-200 p-6
                          md:p-12 shadow-sm"
             >
 
                 {/* Texto */}
                 <div className="flex flex-1 flex-col gap-4">
-                    <h1 className="text-3xl md:text-4xl font-semibold
-                        text-slate-800"
+                    <span className="text-sm font-semibold text-blue-700 tracking-wide uppercase">
+                        Livraria Online
+                    </span>
+                    <h1 className="text-3xl md:text-5xl font-semibold
+                        text-stone-900"
                     >
                         Sua próxima leitura
                     </h1>
-                    <p className="text-base text-slate-600">
+                    <p className="text-base text-stone-600">
                         Descubra milhares de títulos, desde best-sellers a clássicos
                         atemporais. A Livraria Online oferece a melhor curadoria para os
                         amantes da leitura.
@@ -47,6 +51,8 @@ function Home() {
                     <div className="mt-2">
                         <button className="bg-blue-600 text-white text-base
                               px-6 py-3 rounded-lg hover:bg-blue-700
+                              shadow-lg shadow-blue-600/25 transition-all
+                              hover:shadow-blue-600/35 active:scale-[0.98]
                               font-medium cursor-pointer"
                         >
                             Explorar Livros
@@ -54,11 +60,14 @@ function Home() {
                     </div>
                 </div>
 
-                {/* Imagem */}
-                <div className="flex flex-1 w-full h-64 md:h-80 rounded-lg border">
-                    <img
-                        src="https://ik.imagekit.io/5eywr3ioq/hero.png"
-                        alt="Imagem da Seção Hero - Foto da Livraria"
+                {/* Vídeo */}
+                <div className="flex flex-1 w-full h-64 md:h-96 rounded-lg shadow-md ring-1 ring-stone-900/10 overflow-hidden">
+                    <video
+                        src="https://ik.imagekit.io/zvv7puf6g/videolivraria.mp4"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
                         className="w-full h-full object-cover"
                     />
                 </div>
@@ -68,8 +77,8 @@ function Home() {
 
             <section className="flex flex-col gap-6">
 
-                <h2 className="text-2xl font-semibold text-slate-800 border-b
-                      border-slate-200 pb-2">
+                <h2 className="text-2xl font-semibold text-stone-800 border-b
+                      border-stone-200 pb-2">
                     Explore o nosso acervo
                 </h2>
 
@@ -79,7 +88,7 @@ function Home() {
                     {
                         opcoes.map((opcao) => (
                             <Card
-                                key={opcao.titulo}
+                                key={opcao.title}
                                 {...opcao}
                             />
                         ))
